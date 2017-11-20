@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.fortech</groupId>
-            <artifactId>Business Logic</artifactId>
+            <artifactId>BusinessLogic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

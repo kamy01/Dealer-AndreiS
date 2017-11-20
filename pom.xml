@@ -12,7 +12,7 @@
 
     <modules>
         <module>UserInterface</module>
-        <module>Business Logic</module>
+        <module>BusinessLogic</module>
         <module>Repository</module>
         <module>EAR</module>
     </modules>

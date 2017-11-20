@@ -23,7 +23,7 @@
                     <modules>
                         <BusinessLogic>
                             <groupId>com.fortech</groupId>
-                            <artifactId>Business Logic</artifactId>
+                            <artifactId>BusinessLogic</artifactId>
                             <bundleFilename>BusinessLogic.jar</bundleFilename>
                         </BusinessLogic>
                         <UserInterface>
