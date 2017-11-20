@@ -11,9 +11,9 @@
     <name>Simple parent project</name>
 
     <modules>
-        <module>Frontend</module>
-        <module>Backend</module>
-        <module>DB</module>
+        <module>UserInterface</module>
+        <module>Business Logic</module>
+        <module>Repository</module>
         <module>EAR</module>
     </modules>
 

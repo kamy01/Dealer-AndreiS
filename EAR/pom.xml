@@ -20,25 +20,36 @@
                 <artifactId>maven-ear-plugin</artifactId>
                 <version>2.10.1</version>
                 <configuration>
-                    <ModuleTwo>
-                        <groupId>com.fortech</groupId>
-                        <artifactId>Backend</artifactId>
-                        <bundleFilename>Backend.jar</bundleFilename>
-                    </ModuleTwo>
-                    <ModuleOne>
-                        <groupId>com.fortech</groupId>
-                        <artifactId>Frontend</artifactId>
-                        <contextRoot>/webApplication</contextRoot>
-                    </ModuleOne>
-                    <ModuleThree>
-                        <groupId>com.fortech</groupId>
-                        <artifactId>DB</artifactId>
-                        <bundleFilename>DB.jar</bundleFilename>
-                    </ModuleThree>
+                    <modules>
+                        <BusinessLogic>
+                            <groupId>com.fortech</groupId>
+                            <artifactId>Business Logic</artifactId>
+                            <bundleFilename>BusinessLogic.jar</bundleFilename>
+                        </BusinessLogic>
+                        <UserInterface>
+                            <groupId>com.fortech</groupId>
+                            <artifactId>UserInterface</artifactId>
+                            <contextRoot>/webApplication</contextRoot>
+                        </UserInterface>
+                        <Repository>
+                            <groupId>com.fortech</groupId>
+                            <artifactId>Repository</artifactId>
+                            <bundleFilename>Repository.jar</bundleFilename>
+                        </Repository>
+                    </modules>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+        </dependency>
+    </dependencies>
+
 
     
 </project>
