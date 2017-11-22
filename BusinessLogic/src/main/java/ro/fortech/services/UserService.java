@@ -16,6 +16,6 @@ public class UserService implements Serializable {
 
     public boolean validate(User user) {
         User queriedUser = userDao.findUser(user.getUsername(), user.getPassword());
-        return queriedUser != null;
+        return queriedUser.getUsername() != null;
     }
 }

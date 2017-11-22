@@ -23,7 +23,7 @@ public class UserDao {
             return query.getSingleResult();
         }
         catch (Exception e) {
-            return null;
+            return new User();
         }
     }
 }
