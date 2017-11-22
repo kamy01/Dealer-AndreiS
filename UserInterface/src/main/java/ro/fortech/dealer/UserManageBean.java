@@ -3,17 +3,17 @@ package ro.fortech.dealer;
 import ro.fortech.entities.User;
 import ro.fortech.services.UserService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 
-@ManagedBean(name="userManageBean")
+@Named
 @SessionScoped
-public class UserManageBean {
+public class UserManageBean implements Serializable {
     private User user = new User();
-    //@Inject
-    private UserService userService = new UserService();
+    @EJB
+    private UserService userService;
 
     public User getUser() {
         return user;

@@ -2,17 +2,17 @@ package ro.fortech.dao;
 
 import ro.fortech.entities.User;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+@Stateless
 public class UserDao {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");
     private EntityManager em = emf.createEntityManager();
-
-    public UserDao() {}
 
     public User findUser(String username, String password) {
         TypedQuery<User> query;

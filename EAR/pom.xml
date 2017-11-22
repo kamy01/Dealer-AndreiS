@@ -47,21 +47,7 @@
                 <version>2.10.1</version>
                 <configuration>
                     <modules>
-                        <Repository>
-                            <groupId>com.fortech</groupId>
-                            <artifactId>Repository</artifactId>
-                            <bundleFilename>Repository.jar</bundleFilename>
-                        </Repository>
-                        <BusinessLogic>
-                            <groupId>com.fortech</groupId>
-                            <artifactId>BusinessLogic</artifactId>
-                            <bundleFilename>BusinessLogic.jar</bundleFilename>
-                        </BusinessLogic>
-                        <UserInterface>
-                            <groupId>com.fortech</groupId>
-                            <artifactId>UserInterface</artifactId>
-                            <contextRoot>/webApplication</contextRoot>
-                        </UserInterface>
+
                     </modules>
                 </configuration>
             </plugin>
