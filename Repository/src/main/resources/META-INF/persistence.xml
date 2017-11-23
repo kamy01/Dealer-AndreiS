@@ -13,9 +13,9 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dealersDB" />
             <property name="javax.persistence.jdbc.user" value="andrei" />
             <property name="javax.persistence.jdbc.password" value="andrei" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.id.new_generator_mappings" value="false" />
+            <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
+            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true" />
         </properties>
     </persistence-unit>
 </persistence>
