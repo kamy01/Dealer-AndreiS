@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Registration page</title>
 </h:head>
@@ -12,17 +13,22 @@
 <h:body>
         <h:form>
             <h3>Registration form</h3>
-            <h:outputLabel for="username">Username:</h:outputLabel>
-            <h:inputText value="#{userManageBean.user.username}" id="username"
-                         required="true" requiredMessage="Please enter a valid username"/>
-            <br/>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="username" value="Username:" style="font-weight:bold"/>
+                <p:inputText id="username" value="#{userManageBean.user.username}" required="true"/>
+                <br/>
 
-            <h:outputLabel for="password">Password:</h:outputLabel>
-            <h:inputSecret value="#{userManageBean.user.password}" id="password"
-                           required="true" requiredMessage="Please enter a valid password"/>
-            <br/>
+                <h:outputLabel for="pwd1" value="Password: *" />
+                <p:password id="pwd1" value="#{userManageBean.user.password}" match="pwd2" required="true" />
+                <br/>
 
-            <h:commandButton action="#{userManageBean.doRegister}" value="Register" />
+                <h:outputLabel for="pwd2" value="Repeat Password: *" />
+                <p:password id="pwd2" value="#{userManageBean.user.password}" required="true" />
+                <br/>
+
+                <p:commandButton value="Register" action="#{userManageBean.doRegister}" icon="ui-icon-check"
+                                 ajax="false"/>
+            </h:panelGrid>
         </h:form>
 </h:body>
 </html>
