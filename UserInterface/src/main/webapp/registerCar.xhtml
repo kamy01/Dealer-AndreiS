@@ -18,32 +18,33 @@
     </div>
     <h:form>
         <p:panel header="Register a car" style="margin-bottom:10px;">
-            <h:panelGrid columns="6" cellpadding="5">
-                <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
-                <p:inputText id="name" value="#{carManageBean.car.name}" required="true"/>
-                <br/>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                <p:inputText id="name" value="#{carManagedBean.car.name}" required="true"/>
 
-                <h:outputLabel for="mark" value="Mark:" />
-                <p:inputText id="mark" value="#{carManageBean.car.mark}"/>
-                <br/>
+                <p:outputLabel for="mark" value="Mark:" />
+                <p:inputText id="mark" value="#{carManagedBean.car.mark}" required="true"/>
 
-                <h:outputLabel for="color" value="Color:" />
-                <p:inputText id="color" value="#{carManageBean.car.color}"/>
-                <br/>
+                <p:outputLabel for="color" value="Color:" />
+                <p:inputText id="color" value="#{carManagedBean.car.color}"/>
 
-                <h:outputLabel for="price" value="Price:" />
-                <p:inputText id="price" value="#{carManageBean.car.price}" required="true"/>
-                <br/>
+                <p:outputLabel for="price" value="Price:" />
+                <p:inputText id="price" value="#{carManagedBean.car.price}" required="true"/>
 
-                <h:outputLabel for="condition" value="Condition: " />
-                <p:inputText id="condition" value="#{carManageBean.car.condition}" required="true"/>
-                <br/>
+                <p:outputLabel for="condition" value="Condition:" />
+                <p:selectOneMenu id="condition" value="#{carManagedBean.car.condition}">
+                    <p:ajax event="change" update="@this" />
+                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="NEW" itemValue="NEW"/>
+                    <f:selectItem itemLabel="WORN" itemValue="WORN"/>
+                    <f:selectItem itemLabel="DAMAGED" itemValue="DAMAGED"/>
+                    <f:selectItem itemLabel="DESTROYED" itemValue="DESTROYED"/>
+                </p:selectOneMenu>
 
                 <p:outputLabel for="registrationDate" value="Registration Date:" />
-                <p:calendar id="registrationDate" value="#{carManageBean.car.registrationDate}" showOn="button" />
-                <br/>
+                <p:calendar id="registrationDate" value="#{carManagedBean.car.registrationDate}" showOn="button" />
 
-                <p:commandButton value="Register" action="#{carManageBean.doRegister}" icon="ui-icon-check"
+                <p:commandButton value="Register" action="#{carManagedBean.doRegister}" icon="ui-icon-check"
                                  ajax="false"/>
             </h:panelGrid>
         </p:panel>

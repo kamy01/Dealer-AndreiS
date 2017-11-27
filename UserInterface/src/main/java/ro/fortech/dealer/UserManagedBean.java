@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Named
 @RequestScoped
-public class UserManageBean implements Serializable {
+public class UserManagedBean implements Serializable {
     private User user = new User();
     @EJB
     private UserService userService;
@@ -27,7 +27,7 @@ public class UserManageBean implements Serializable {
     public String doLogin() {
         boolean succesfullyAuth = userService.validateLogin(user);
         if (succesfullyAuth)
-            return "success?faces-redirect=true";
+            return "mainPage?faces-redirect=true";
         else
             return "login?faces-redirect=true";
     }

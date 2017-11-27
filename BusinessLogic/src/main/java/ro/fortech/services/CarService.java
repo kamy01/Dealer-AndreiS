@@ -12,9 +12,7 @@ public class CarService {
     @Inject
     private CarDao carDao;
 
-    // TODO change name of method (register), void
-    public boolean validateRegister(Car car) {
+    public void register(Car car) {
         carDao.registerCar(car);
-        return true;
     }
 }

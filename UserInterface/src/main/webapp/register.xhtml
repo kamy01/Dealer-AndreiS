@@ -15,18 +15,18 @@
             <h3>Registration form</h3>
             <h:panelGrid columns="3" cellpadding="5">
                 <h:outputLabel for="username" value="Username:" style="font-weight:bold"/>
-                <p:inputText id="username" value="#{userManageBean.user.username}" required="true"/>
+                <p:inputText id="username" value="#{userManagedBean.user.username}" required="true"/>
                 <br/>
 
                 <h:outputLabel for="pwd1" value="Password: *" />
-                <p:password id="pwd1" value="#{userManageBean.user.password}" match="pwd2" required="true" />
+                <p:password id="pwd1" value="#{userManagedBean.user.password}" match="pwd2" required="true" />
                 <br/>
 
                 <h:outputLabel for="pwd2" value="Repeat Password: *" />
-                <p:password id="pwd2" value="#{userManageBean.user.password}" required="true" />
+                <p:password id="pwd2" value="#{userManagedBean.user.password}" required="true" />
                 <br/>
 
-                <p:commandButton value="Register" action="#{userManageBean.doRegister}" icon="ui-icon-check"
+                <p:commandButton value="Register" action="#{userManagedBean.doRegister}" icon="ui-icon-check"
                                  ajax="false"/>
             </h:panelGrid>
         </h:form>

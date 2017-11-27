@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class CarManageBean {
+public class CarManagedBean {
     private Car car = new Car();
     @EJB
     private CarService carService;
@@ -23,10 +23,7 @@ public class CarManageBean {
     }
 
     public String doRegister() {
-        boolean succesfullyRegistered = carService.validateRegister(car);
-        if (succesfullyRegistered)
-            return "success?faces-redirect=true";
-        else
-            return "registerCar?faces-redirect=true";
+        carService.register(car);
+        return "mainPage?faces-redirect=true";
     }
 }

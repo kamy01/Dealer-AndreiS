@@ -1,10 +1,11 @@
 package ro.fortech.entities;
 
+import ro.fortech.commons.ConditionStatus;
+
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
-// TODO change condition field to ENUM, ADD enum
-// add commons
 @Entity(name="car")
 public class Car {
 
@@ -15,8 +16,9 @@ public class Car {
     private String color;
     private double price;
     @Column(name="\"condition\"")
-    private String condition;
-    // TODO add future validation
+    @Enumerated(EnumType.STRING)
+    private ConditionStatus condition;
+    @Past
     @Temporal(TemporalType.DATE)
     private Date registrationDate;
 
@@ -52,11 +54,11 @@ public class Car {
         this.price = price;
     }
 
-    public String getCondition() {
+    public ConditionStatus getCondition() {
         return condition;
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(ConditionStatus condition) {
         this.condition = condition;
     }
 
