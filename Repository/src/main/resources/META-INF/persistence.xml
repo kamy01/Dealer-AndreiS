@@ -8,6 +8,7 @@
     <persistence-unit name="myPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <class>ro.fortech.entities.User</class>
+        <class>ro.fortech.entities.Car</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dealersDB" />
