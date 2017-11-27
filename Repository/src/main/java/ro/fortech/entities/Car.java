@@ -1,6 +1,6 @@
 package ro.fortech.entities;
 
-import ro.fortech.commons.ConditionStatus;
+import utilities.enums.ConditionStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.Past;

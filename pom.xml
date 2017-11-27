@@ -15,6 +15,7 @@
         <module>BusinessLogic</module>
         <module>UserInterface</module>
         <module>EAR</module>
+        <module>Commons</module>
     </modules>
 
     <dependencyManagement>

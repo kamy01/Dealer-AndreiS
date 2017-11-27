@@ -1,4 +1,4 @@
-package ro.fortech.commons;
+package utilities.enums;
 
 public enum ConditionStatus {
     NEW,
