@@ -22,6 +22,10 @@
 
                 <p:commandButton value="Login" action="#{userManagedBean.doLogin}" icon="ui-icon-check"
                                  ajax="false"/>
+
+                <h:commandButton type="button" value="Registration page" action="register?faces-redirect=true">
+                    <f:ajax />
+                </h:commandButton>
             </h:panelGrid>
     </h:form>
 </h:body>

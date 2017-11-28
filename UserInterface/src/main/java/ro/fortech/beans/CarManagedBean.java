@@ -1,4 +1,4 @@
-package ro.fortech.dealer;
+package ro.fortech.beans;
 
 import ro.fortech.entities.Car;
 import ro.fortech.services.CarService;
