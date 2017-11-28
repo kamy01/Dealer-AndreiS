@@ -15,14 +15,6 @@ public class UserManagedBean implements Serializable {
     @EJB
     private UserService userService;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public String doLogin() {
         boolean succesfullyAuth = userService.validateLogin(user);
         if (succesfullyAuth)
@@ -37,5 +29,13 @@ public class UserManagedBean implements Serializable {
             return "login?faces-redirect=true";
         else
             return "register?faces-redirect=true";
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

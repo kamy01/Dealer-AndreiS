@@ -31,7 +31,7 @@ public class UserDao {
 
     public boolean doesUserExist(String username) {
         try {
-            TypedQuery<User> query = em.createNamedQuery("FindUserByName", User.class);
+            TypedQuery<User> query = em.createNamedQuery("User.findByName", User.class);
             query.setParameter(1, username);
             User user = query.getSingleResult();
             return true;

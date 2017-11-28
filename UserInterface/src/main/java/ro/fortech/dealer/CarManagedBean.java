@@ -18,6 +18,16 @@ public class CarManagedBean {
     @EJB
     private CarService carService;
 
+    @PostConstruct
+    public void init() {
+        cars = carService.getCars();
+    }
+
+    public String doRegister() {
+        carService.register(car);
+        return "mainPage?faces-redirect=true";
+    }
+
     public Car getCar() {
         return car;
     }
@@ -32,15 +42,5 @@ public class CarManagedBean {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    @PostConstruct
-    public void init() {
-        cars = carService.getCars();
-    }
-
-    public String doRegister() {
-        carService.register(car);
-        return "mainPage?faces-redirect=true";
     }
 }
