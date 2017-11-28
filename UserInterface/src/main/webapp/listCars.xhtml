@@ -16,12 +16,23 @@
         </ui:insert>
     </div>
     <h:form>
-        <p:dataList value="#{carManagedBean.cars}" var="car" type="definition">
-            <f:facet name="header">
-                Car list
-            </f:facet>
-            <b>Name:</b> #{car.name} <b>Brand:</b> #{car.mark} <b>Color:</b> #{car.color}
-        </p:dataList>
+        <p:dataTable var="car" value="#{carManagedBean.cars}">
+            <p:column headerText="Name">
+                <h:outputText value="#{car.name}" />
+            </p:column>
+
+            <p:column headerText="Registration Date">
+                <h:outputText value="#{car.registrationDate}" />
+            </p:column>
+
+            <p:column headerText="Brand">
+                <h:outputText value="#{car.mark}" />
+            </p:column>
+
+            <p:column headerText="Color">
+                <h:outputText value="#{car.color}" />
+            </p:column>
+        </p:dataTable>
     </h:form>
 </h:body>
 </html>
