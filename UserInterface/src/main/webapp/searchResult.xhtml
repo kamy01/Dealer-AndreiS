@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Search Result Page</title>
+</h:head>
+<h:body>
+    <div id="header">
+        <ui:insert name="header" >
+            <ui:include src="header.xhtml" />
+        </ui:insert>
+    </div>
+    <h:form>
+        <p:dataTable var="car" value="#{carManagedBean.cars}">
+            <p:column headerText="Name">
+                <h:outputText value="#{car.name}" />
+            </p:column>
+
+            <p:column headerText="Registration Date">
+                <h:outputText value="#{car.registrationDate}" />
+            </p:column>
+
+            <p:column headerText="Brand">
+                <h:outputText value="#{car.mark}" />
+            </p:column>
+
+            <p:column headerText="Color">
+                <h:outputText value="#{car.color}" />
+            </p:column>
+
+            <p:column headerText="Price">
+                <h:outputText value="#{car.price}" />
+            </p:column>
+
+            <p:column headerText="Condition">
+                <h:outputText value="#{car.condition}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

@@ -25,4 +25,22 @@ public class CarDao {
         TypedQuery<Car> query = em.createQuery("SELECT c from car c", Car.class);
         return query.getResultList();
     }
+
+    public List<Car> findCarsByFilter(double price, String color, List<String> mark) {
+        TypedQuery<Car> query;
+        String sqlStatement = "SELECT c from car c where c.price>=?1 AND c.color LIKE ?2";
+        if (mark.isEmpty()) {
+            query = em.createQuery(sqlStatement, Car.class);
+            query.setParameter(1,price);
+            query.setParameter(2,color);
+        }
+        else {
+            sqlStatement += " AND c.mark in ?3";
+            query = em.createQuery(sqlStatement, Car.class);
+            query.setParameter(1,price);
+            query.setParameter(2,color);
+            query.setParameter(3,mark);
+        }
+        return query.getResultList();
+    }
 }

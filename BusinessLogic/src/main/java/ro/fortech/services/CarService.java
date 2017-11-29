@@ -5,6 +5,7 @@ import ro.fortech.entities.Car;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -19,5 +20,11 @@ public class CarService {
 
     public List<Car> getCars() {
         return carDao.getAllCars();
+    }
+
+    public List<Car> validateSearch(double price, String color, List<String> mark) {
+        List<Car> cars;
+        cars = carDao.findCarsByFilter(price, color, mark);
+        return cars;
     }
 }

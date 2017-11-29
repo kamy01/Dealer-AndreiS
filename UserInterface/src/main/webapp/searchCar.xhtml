@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Search Car Page</title>
+</h:head>
+<h:body>
+    <div id="header">
+        <ui:insert name="header" >
+            <ui:include src="header.xhtml" />
+        </ui:insert>
+    </div>
+    <h:form>
+        <p:panel header="Search for a car" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="price" value="Price:" style="font-weight:bold"/>
+                <p:inputText id="price" value="#{carManagedBean.carPrice}" required="false"/>
+
+                <p:outputLabel for="color" value="Color:" />
+                <p:selectOneMenu id="color" value="#{carManagedBean.carColor}">
+                    <p:ajax event="change" update="@this" />
+                    <f:selectItem itemLabel="RED" itemValue="RED"/>
+                    <f:selectItem itemLabel="GREEN" itemValue="GREEN"/>
+                    <f:selectItem itemLabel="BLACK" itemValue="BLACK"/>
+                    <f:selectItem itemLabel="YELLOW" itemValue="YELLOW"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel for="mark" value="Mark:" />
+                <p:selectCheckboxMenu id="mark" value="#{carManagedBean.brands}" label="Marks" multiple="true"
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                    <p:ajax event="change" update="@this" />
+                    <f:selectItem itemLabel="FORD" itemValue="FORD"/>
+                    <f:selectItem itemLabel="AUDI" itemValue="AUDI"/>
+                    <f:selectItem itemLabel="BMW" itemValue="BMW"/>
+                    <f:selectItem itemLabel="RENAULT" itemValue="RENAULT"/>
+                </p:selectCheckboxMenu>
+
+                <p:commandButton value="Search" action="#{carManagedBean.doSearch}" icon="ui-icon-check"
+                                 ajax="false"/>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
