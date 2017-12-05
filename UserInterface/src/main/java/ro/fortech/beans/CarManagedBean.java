@@ -2,11 +2,11 @@ package ro.fortech.beans;
 
 import ro.fortech.entities.Car;
 import ro.fortech.services.CarService;
+import utilities.dtos.CarDto;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,13 +15,20 @@ import java.util.List;
 @Named
 @RequestScoped
 public class CarManagedBean implements Serializable {
-    private Car car = new Car();
-    private List<Car> cars = new ArrayList<Car>();
-    private List<String> brands = new ArrayList<String>();
-    private double carPrice;
-    private String carColor;
+    private CarDto car;
+    private List<CarDto> cars;
+    private List<String> brands;
+    private double price;
+    private String color;
     @EJB
     private CarService carService;
+
+    @PostConstruct
+    public void init() {
+        car = new CarDto();
+        cars = new ArrayList<CarDto>();
+        brands = new ArrayList<String>();
+    }
 
     public String listCars() {
         cars = carService.getCars();
@@ -34,23 +41,23 @@ public class CarManagedBean implements Serializable {
     }
 
     public String doSearch() {
-        cars = carService.validateSearch(carPrice, carColor, brands);
+        cars = carService.validateSearch(price, color, brands);
         return "searchResult";
     }
 
-    public Car getCar() {
+    public CarDto getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(CarDto car) {
         this.car = car;
     }
 
-    public List<Car> getCars() {
+    public List<CarDto> getCars() {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
+    public void setCars(List<CarDto> cars) {
         this.cars = cars;
     }
 
@@ -62,19 +69,19 @@ public class CarManagedBean implements Serializable {
         this.brands = brands;
     }
 
-    public double getCarPrice() {
-        return carPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setCarPrice(double carPrice) {
-        this.carPrice = carPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getCarColor() {
-        return carColor;
+    public String getColor() {
+        return color;
     }
 
-    public void setCarColor(String carColor) {
-        this.carColor = carColor;
+    public void setColor(String color) {
+        this.color = color;
     }
 }

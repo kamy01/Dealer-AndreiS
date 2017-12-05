@@ -19,10 +19,10 @@
         <p:panel header="Search for a car" style="margin-bottom:10px;">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="price" value="Price:" style="font-weight:bold"/>
-                <p:inputText id="price" value="#{carManagedBean.carPrice}" required="false"/>
+                <p:inputText id="price" value="#{carManagedBean.price}" required="false"/>
 
                 <p:outputLabel for="color" value="Color:" />
-                <p:selectOneMenu id="color" value="#{carManagedBean.carColor}">
+                <p:selectOneMenu id="color" value="#{carManagedBean.color}">
                     <p:ajax event="change" update="@this" />
                     <f:selectItem itemLabel="RED" itemValue="RED"/>
                     <f:selectItem itemLabel="GREEN" itemValue="GREEN"/>
