@@ -1,7 +1,6 @@
 package ro.fortech.services;
 
 import ro.fortech.dao.CarDao;
-import ro.fortech.entities.Car;
 import utilities.dtos.CarDto;
 
 import javax.ejb.Stateless;

@@ -7,7 +7,7 @@ import javax.validation.constraints.Past;
 import java.util.Date;
 
 @Entity(name="car")
-public class Car {
+public class CarEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

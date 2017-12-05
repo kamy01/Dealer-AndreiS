@@ -1,11 +1,11 @@
 package ro.fortech.beans;
 
-import ro.fortech.entities.User;
+import ro.fortech.entities.UserEntity;
 import ro.fortech.services.UserService;
+import utilities.dtos.UserDto;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -13,8 +13,8 @@ import java.io.Serializable;
 @Named
 @RequestScoped
 public class UserManagedBean implements Serializable {
-    private User user = new User();
 
+    private UserDto user = new UserDto();
     @EJB
     private UserService userService;
 
@@ -43,11 +43,11 @@ public class UserManagedBean implements Serializable {
         return "login?faces-redirect=true";
     }
 
-    public User getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 }

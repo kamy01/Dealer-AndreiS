@@ -16,29 +16,29 @@
         </ui:insert>
     </div>
     <h:form>
-        <p:dataTable var="car" value="#{carManagedBean.cars}">
+        <p:dataTable var="carEntity" value="#{carManagedBean.cars}">
             <p:column headerText="Name">
-                <h:outputText value="#{car.name}" />
+                <h:outputText value="#{carEntity.name}" />
             </p:column>
 
             <p:column headerText="Registration Date">
-                <h:outputText value="#{car.registrationDate}" />
+                <h:outputText value="#{carEntity.registrationDate}" />
             </p:column>
 
             <p:column headerText="Brand">
-                <h:outputText value="#{car.mark}" />
+                <h:outputText value="#{carEntity.mark}" />
             </p:column>
 
             <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
+                <h:outputText value="#{carEntity.color}" />
             </p:column>
 
             <p:column headerText="Price">
-                <h:outputText value="#{car.price}" />
+                <h:outputText value="#{carEntity.price}" />
             </p:column>
 
             <p:column headerText="Condition">
-                <h:outputText value="#{car.condition}" />
+                <h:outputText value="#{carEntity.condition}" />
             </p:column>
         </p:dataTable>
     </h:form>
