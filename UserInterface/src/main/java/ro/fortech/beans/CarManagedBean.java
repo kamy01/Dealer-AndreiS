@@ -2,6 +2,8 @@ package ro.fortech.beans;
 
 import ro.fortech.services.CarService;
 import utilities.dtos.CarDto;
+import utilities.enums.CarBrand;
+import utilities.enums.CarColor;
 import utilities.enums.ConditionStatus;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -24,14 +27,20 @@ public class CarManagedBean implements Serializable {
     private ConditionStatus condition;
     private Date registrationDate;
     private List<CarDto> cars;
-    private List<String> brands;
+    private List<String> selectedMarks;
+    private List<String> availableColors;
+    private List<String> availableMarks;
+    private List<String> conditionStatuses;
     @EJB
     private CarService carService;
 
     @PostConstruct
     public void init() {
         cars = new ArrayList<CarDto>();
-        brands = new ArrayList<String>();
+        selectedMarks = new ArrayList<String>();
+        availableColors = getCarColors();
+        availableMarks = getCarMarks();
+        conditionStatuses = getCarConditionStatuses();
     }
 
     public String listCars() {
@@ -45,6 +54,11 @@ public class CarManagedBean implements Serializable {
         return "mainPage?faces-redirect=true";
     }
 
+    public String doSearch() {
+        cars = carService.validateSearch(price, color, selectedMarks);
+        return "searchResult";
+    }
+
     private CarDto buildCarDto() {
         CarDto carDto = new CarDto();
         carDto.setName(name);
@@ -56,9 +70,52 @@ public class CarManagedBean implements Serializable {
         return carDto;
     }
 
-    public String doSearch() {
-        cars = carService.validateSearch(price, color, brands);
-        return "searchResult";
+    private List<String> getCarColors() {
+        List<String> availableCarColors = new ArrayList<String>();
+        for (CarColor carColor : CarColor.values()) {
+            availableCarColors.add(carColor.toString());
+        }
+        return availableCarColors;
+    }
+
+    private List<String> getCarMarks() {
+        List<String> availableCarMarks = new ArrayList<String>();
+        for (CarBrand carMark : CarBrand.values()) {
+            availableCarMarks.add(carMark.toString());
+        }
+        return availableCarMarks;
+    }
+
+    private List<String> getCarConditionStatuses() {
+        List<String> availableConditionStatuses = new ArrayList<String>();
+        for (ConditionStatus carConditionStatus : ConditionStatus.values()) {
+            availableConditionStatuses.add(carConditionStatus.toString());
+        }
+        return availableConditionStatuses;
+    }
+
+    public List<String> getConditionStatuses() {
+        return conditionStatuses;
+    }
+
+    public void setConditionStatuses(List<String> conditionStatuses) {
+        this.conditionStatuses = conditionStatuses;
+    }
+
+    public List<String> getAvailableMarks() {
+        return availableMarks;
+    }
+
+    public void setAvailableMarks(List<String> availableMarks) {
+        this.availableMarks = availableMarks;
+    }
+
+    public List<String> getAvailableColors() {
+        return availableColors;
+    }
+
+    public void setAvailableColors(List<String> availableColors) {
+        this.availableColors = availableColors;
     }
 
     public String getName() { return name; }
@@ -85,12 +142,12 @@ public class CarManagedBean implements Serializable {
         this.cars = cars;
     }
 
-    public List<String> getBrands() {
-        return brands;
+    public List<String> getSelectedMarks() {
+        return selectedMarks;
     }
 
-    public void setBrands(List<String> brands) {
-        this.brands = brands;
+    public void setSelectedMarks(List<String> selectedMarks) {
+        this.selectedMarks = selectedMarks;
     }
 
     public double getPrice() {

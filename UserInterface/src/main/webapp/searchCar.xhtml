@@ -24,20 +24,14 @@
                 <p:outputLabel for="color" value="Color:" />
                 <p:selectOneMenu id="color" value="#{carManagedBean.color}">
                     <p:ajax event="change" update="@this" />
-                    <f:selectItem itemLabel="RED" itemValue="RED"/>
-                    <f:selectItem itemLabel="GREEN" itemValue="GREEN"/>
-                    <f:selectItem itemLabel="BLACK" itemValue="BLACK"/>
-                    <f:selectItem itemLabel="YELLOW" itemValue="YELLOW"/>
+                    <f:selectItems value="#{carManagedBean.availableColors}"/>
                 </p:selectOneMenu>
 
                 <h:outputLabel for="mark" value="Mark:" />
-                <p:selectCheckboxMenu id="mark" value="#{carManagedBean.brands}" label="Marks" multiple="true"
+                <p:selectCheckboxMenu id="mark" value="#{carManagedBean.selectedMarks}" label="Marks" multiple="true"
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                     <p:ajax event="change" update="@this" />
-                    <f:selectItem itemLabel="FORD" itemValue="FORD"/>
-                    <f:selectItem itemLabel="AUDI" itemValue="AUDI"/>
-                    <f:selectItem itemLabel="BMW" itemValue="BMW"/>
-                    <f:selectItem itemLabel="RENAULT" itemValue="RENAULT"/>
+                    <f:selectItems value="#{carManagedBean.availableMarks}"/>
                 </p:selectCheckboxMenu>
 
                 <p:commandButton value="Search" action="#{carManagedBean.doSearch}" icon="ui-icon-check"

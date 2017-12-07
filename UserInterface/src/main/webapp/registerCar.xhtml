@@ -35,10 +35,7 @@
                 <p:selectOneMenu id="condition" value="#{carManagedBean.condition}">
                     <p:ajax event="change" update="@this" />
                     <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
-                    <f:selectItem itemLabel="NEW" itemValue="NEW"/>
-                    <f:selectItem itemLabel="WORN" itemValue="WORN"/>
-                    <f:selectItem itemLabel="DAMAGED" itemValue="DAMAGED"/>
-                    <f:selectItem itemLabel="DESTROYED" itemValue="DESTROYED"/>
+                    <f:selectItems value="#{carManagedBean.conditionStatuses}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel for="registrationDate" value="Registration Date:" />

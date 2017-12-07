@@ -1,6 +1,5 @@
 package ro.fortech.beans;
 
-import ro.fortech.entities.UserEntity;
 import ro.fortech.services.UserService;
 import utilities.dtos.UserDto;
 

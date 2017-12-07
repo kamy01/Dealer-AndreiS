@@ -1,7 +1,5 @@
 package ro.fortech.filters;
 
-import ro.fortech.beans.UserManagedBean;
-
 import java.io.IOException;
 import javax.faces.application.ResourceHandler;
 import javax.servlet.*;

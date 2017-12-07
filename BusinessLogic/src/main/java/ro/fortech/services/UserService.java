@@ -1,7 +1,6 @@
 package ro.fortech.services;
 
 import ro.fortech.dao.UserDao;
-import ro.fortech.entities.UserEntity;
 import utilities.dtos.UserDto;
 
 import javax.ejb.Stateless;
