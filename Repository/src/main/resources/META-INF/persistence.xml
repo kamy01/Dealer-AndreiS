@@ -10,6 +10,7 @@
         <class>ro.fortech.entities.UserEntity</class>
         <class>ro.fortech.entities.CarEntity</class>
         <class>ro.fortech.entities.DealerEntity</class>
+        <class>ro.fortech.entities.BuyerEntity</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dealersDB" />

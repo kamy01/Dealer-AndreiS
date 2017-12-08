@@ -26,6 +26,10 @@
                 <p:password id="pwd2" value="#{userManagedBean.user.password}" required="true" />
                 <br/>
 
+                <h:outputText value="Is dealer: " />
+                <p:selectBooleanCheckbox value="#{userManagedBean.dealer}" />
+                <br/>
+
                 <p:commandButton value="Register" action="#{userManagedBean.doRegister}" icon="ui-icon-check"
                                  ajax="false"/>
             </h:panelGrid>

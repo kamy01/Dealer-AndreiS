@@ -1,5 +1,7 @@
 package ro.fortech.beans;
 
+import ro.fortech.services.BuyerService;
+import ro.fortech.services.DealerService;
 import ro.fortech.services.UserService;
 import utilities.dtos.UserDto;
 
@@ -14,8 +16,13 @@ import java.io.Serializable;
 public class UserManagedBean implements Serializable {
 
     private UserDto user = new UserDto();
+    private boolean isDealer;
     @EJB
     private UserService userService;
+    @EJB
+    private DealerService dealerService;
+    @EJB
+    private BuyerService buyerService;
 
     public String doLogin() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -31,6 +38,10 @@ public class UserManagedBean implements Serializable {
 
     public String doRegister() {
         boolean succesfullyRegistered = userService.validateRegister(user);
+        if (isDealer)
+            succesfullyRegistered = succesfullyRegistered && dealerService.validateRegister(user);
+        else
+            succesfullyRegistered = succesfullyRegistered && buyerService.validateRegister(user);
         if (succesfullyRegistered)
             return "login?faces-redirect=true";
         else
@@ -48,5 +59,13 @@ public class UserManagedBean implements Serializable {
 
     public void setUser(UserDto user) {
         this.user = user;
+    }
+
+    public boolean isDealer() {
+        return isDealer;
+    }
+
+    public void setDealer(boolean dealer) {
+        isDealer = dealer;
     }
 }
