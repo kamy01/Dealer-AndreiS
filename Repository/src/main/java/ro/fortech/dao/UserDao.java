@@ -46,4 +46,16 @@ public class UserDao {
         }
     }
 
+    public boolean isUserADealer(UserDto userDto) {
+        try {
+            TypedQuery<UserEntity> query = em.createQuery("SELECT u FROM user u, dealer d WHERE u.username=?1 AND u.id = d.userId", UserEntity.class);
+            query.setParameter(1, userDto.getUsername());
+            String username = query.getSingleResult().getUsername();
+            return username.equals(userDto.getUsername());
+        }
+        catch (NoResultException e) {
+            return false;
+        }
+    }
+
 }

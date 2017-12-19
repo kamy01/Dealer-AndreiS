@@ -5,14 +5,16 @@ import ro.fortech.services.DealerService;
 import ro.fortech.services.UserService;
 import utilities.dtos.UserDto;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class UserManagedBean implements Serializable {
 
     private UserDto user = new UserDto();
@@ -30,6 +32,7 @@ public class UserManagedBean implements Serializable {
         if (succesfullyAuth)
         {
             context.getExternalContext().getSessionMap().put("user", user);
+            isDealer = userService.validateRole(user);
             return "mainPage?faces-redirect=true";
         }
         else

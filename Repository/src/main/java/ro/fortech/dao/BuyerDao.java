@@ -6,10 +6,7 @@ import ro.fortech.entities.DealerEntity;
 import utilities.dtos.UserDto;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 @Stateless
 public class BuyerDao {
@@ -30,7 +27,7 @@ public class BuyerDao {
             query.setParameter(1, username);
             return (Integer) query.getSingleResult();
         }
-        catch (Exception e) {
+        catch (NoResultException e) {
             return 0;
         }
     }

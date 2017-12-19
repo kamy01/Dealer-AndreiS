@@ -21,6 +21,7 @@ public class CarEntity {
     @Past
     @Temporal(TemporalType.DATE)
     private Date registrationDate;
+    private boolean sold;
 
     public String getName() {
         return name;
@@ -70,4 +71,11 @@ public class CarEntity {
         this.registrationDate = registrationDate;
     }
 
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
 }

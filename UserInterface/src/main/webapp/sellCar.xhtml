@@ -5,9 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-    <title>All Cars Page</title>
+    <title>Sell Cars Page</title>
 </h:head>
 <h:body>
     <div id="header">
@@ -15,28 +15,28 @@
             <ui:include src="header.xhtml" />
         </ui:insert>
     </div>
-    <h:form>
-        <p:dataTable var="carEntity" value="#{carManagedBean.cars}">
-            <p:column headerText="Name">
+    <h:form id="mainForm">
+        <h:dataTable var="carEntity" value="#{sellCarManagedBean.cars}">
+            <h:column headerText="Name">
                 <h:outputText value="#{carEntity.name}" />
-            </p:column>
+            </h:column>
 
-            <p:column headerText="Registration Date">
+            <h:column headerText="Registration Date">
                 <h:outputText value="#{carEntity.registrationDate}" />
-            </p:column>
+            </h:column>
 
-            <p:column headerText="Brand">
+            <h:column headerText="Brand">
                 <h:outputText value="#{carEntity.mark}" />
-            </p:column>
+            </h:column>
 
-            <p:column headerText="Color">
+            <h:column headerText="Color">
                 <h:outputText value="#{carEntity.color}" />
-            </p:column>
+            </h:column>
 
-            <p:column headerText="Is sold">
-                <h:outputText value="#{carEntity.sold}" />
-            </p:column>
-        </p:dataTable>
+            <h:column>
+                <h:commandButton value="Sell" action="#{sellCarManagedBean.doSell(carEntity.name, carEntity.price)}" />
+            </h:column>
+        </h:dataTable>
     </h:form>
 </h:body>
 </html>

@@ -10,9 +10,11 @@
     <ui:composition>
         <h:form>
             <p:menubar>
-                <p:menuitem value="Add Car" url="registerCar.xhtml" icon="ui-icon-disk" />
+                <p:menuitem value="Register Car" url="registerCar.xhtml" icon="ui-icon-disk" />
+                <p:menuitem value="Sell Car" url="sellCar.xhtml" icon="ui-icon-disk" rendered="#{userManagedBean.dealer}" />
                 <p:menuitem value="Search Car" url="searchCar.xhtml" icon="ui-icon-search" />
                 <p:menuitem value="List Cars" action="#{carManagedBean.listCars}" icon="ui-icon-search" />
+                <p:menuitem value="Upload from xml" url="xmlUpload.xhtml" icon="ui-icon-disk" />
                 <p:menuitem value="Logout" action="#{userManagedBean.doLogout}" icon="ui-icon-close"/>
             </p:menubar>
         </h:form>

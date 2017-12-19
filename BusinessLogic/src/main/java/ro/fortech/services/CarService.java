@@ -21,9 +21,17 @@ public class CarService {
         return carDao.getAllCars();
     }
 
+    public List<CarDto> getAvailableCars() {
+        return carDao.getAvailableCars();
+    }
+
     public List<CarDto> validateSearch(double price, String color, List<String> mark) {
         List<CarDto> cars;
         cars = carDao.findCarsByFilter(price, color, mark);
         return cars;
+    }
+
+    public void validateSale(String name) {
+        carDao.updateSale(name);
     }
 }

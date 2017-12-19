@@ -13,6 +13,7 @@ public class CarDto implements Serializable {
     private double price;
     private ConditionStatus condition;
     private Date registrationDate;
+    private boolean sold;
 
     public String getName() {
         return name;
@@ -60,5 +61,13 @@ public class CarDto implements Serializable {
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
     }
 }

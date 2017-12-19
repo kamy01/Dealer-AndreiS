@@ -6,10 +6,7 @@ import ro.fortech.entities.CarEntity;
 import utilities.dtos.CarDto;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +25,16 @@ public class CarDao {
 
     public List<CarDto> getAllCars() {
         TypedQuery<CarEntity> query = em.createQuery("SELECT c from car c", CarEntity.class);
+        List<CarDto> carDtoList = new ArrayList<CarDto>();
+        for (CarEntity carEntity : query.getResultList()) {
+            CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
+            carDtoList.add(carDto);
+        }
+        return carDtoList;
+    }
+
+    public List<CarDto> getAvailableCars() {
+        TypedQuery<CarEntity> query = em.createQuery("SELECT c from car c WHERE c.sold=false", CarEntity.class);
         List<CarDto> carDtoList = new ArrayList<CarDto>();
         for (CarEntity carEntity : query.getResultList()) {
             CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
@@ -58,5 +65,23 @@ public class CarDao {
             carDtoList.add(carDto);
         }
         return carDtoList;
+    }
+
+    public int findCarIdForName(String name) {
+        try {
+            Query query = em.createQuery("SELECT c.id from car c WHERE c.name=?1");
+            query.setParameter(1, name);
+            return (Integer) query.getSingleResult();
+        }
+        catch (NoResultException e) {
+            return 0;
+        }
+    }
+
+    public void updateSale(String name) {
+        CarEntity carEntity = em.find(CarEntity.class, findCarIdForName(name));
+        em.getTransaction().begin();
+        carEntity.setSold(true);
+        em.getTransaction().commit();
     }
 }

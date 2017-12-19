@@ -28,4 +28,9 @@ public class UserService implements Serializable {
         else
             return false;
     }
+
+    public boolean validateRole(UserDto userDto) {
+        boolean isUserADealer = userDao.isUserADealer(userDto);
+        return isUserADealer;
+    }
 }

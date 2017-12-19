@@ -22,4 +22,8 @@ public class DealerService {
         else
             return false;
     }
+
+    public void validateSale(UserDto userDto, double carPrice) {
+        dealerDao.updateAmount(userDto, carPrice);
+    }
 }

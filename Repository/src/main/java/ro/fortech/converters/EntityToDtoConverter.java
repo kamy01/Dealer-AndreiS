@@ -15,6 +15,7 @@ public class EntityToDtoConverter {
         carDto.setPrice(carEntity.getPrice());
         carDto.setCondition(carEntity.getCondition());
         carDto.setRegistrationDate(carEntity.getRegistrationDate());
+        carDto.setSold(carEntity.isSold());
         return carDto;
     }
 

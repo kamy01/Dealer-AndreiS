@@ -13,9 +13,6 @@ public class DealerEntity {
     private String lastName;
     private double amount;
     private int userId;
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="dealer_fk")
-    private Set<CarEntity> cars = new HashSet<CarEntity>();
 
     public int getUserId() {
         return userId;
@@ -47,13 +44,5 @@ public class DealerEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Set<CarEntity> getCars() {
-        return cars;
-    }
-
-    public void setCars(Set<CarEntity> cars) {
-        this.cars = cars;
     }
 }
