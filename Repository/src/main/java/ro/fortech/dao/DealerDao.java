@@ -31,10 +31,10 @@ public class DealerDao {
         }
     }
 
-    public int findDealerIdForUserName(String username) {
+    public int findDealerIdForUserId(int id) {
         try {
-            Query query = em.createQuery("SELECT d.id from dealer d WHERE d.firstName=?1");
-            query.setParameter(1, username);
+            Query query = em.createQuery("SELECT d.id from dealer d WHERE d.userId=?1");
+            query.setParameter(1, id);
             return (Integer) query.getSingleResult();
         }
         catch (NoResultException e) {
@@ -43,9 +43,9 @@ public class DealerDao {
     }
 
     public void updateAmount(UserDto userDto, double carPrice) {
-        DealerEntity dealerEntity = em.find(DealerEntity.class, findDealerIdForUserName(userDto.getUsername()));
+        DealerEntity dealerEntity = em.find(DealerEntity.class, findDealerIdForUserId(userDto.getId()));
         em.getTransaction().begin();
-        dealerEntity.setAmount(carPrice);
+        dealerEntity.setAmount(dealerEntity.getAmount()+carPrice);
         em.getTransaction().commit();
     }
 }

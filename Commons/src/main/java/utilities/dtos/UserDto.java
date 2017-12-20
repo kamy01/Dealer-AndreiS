@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class UserDto implements Serializable {
 
+    private int id;
     private String username;
     private String password;
     private long identificationNumber;
@@ -48,5 +49,13 @@ public class UserDto implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

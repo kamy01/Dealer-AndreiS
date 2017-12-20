@@ -58,4 +58,15 @@ public class UserDao {
         }
     }
 
+    public int getIdFromUserName(String username) {
+        try {
+            Query query = em.createQuery("SELECT u.id FROM user u WHERE u.username=?1", UserEntity.class);
+            query.setParameter(1, username);
+            return (Integer) query.getSingleResult();
+        }
+        catch (NoResultException e) {
+            return 0;
+        }
+    }
+
 }

@@ -15,6 +15,9 @@ public class UserService implements Serializable {
 
     public boolean validateLogin(UserDto userDto) {
         UserDto queriedUser = userDao.findUser(userDto.getUsername(), userDto.getPassword());
+        int id = userDao.getIdFromUserName(userDto.getUsername());
+        if (id > 0)
+            userDto.setId(userDao.getIdFromUserName(userDto.getUsername()));
         return queriedUser.getUsername() != null;
     }
 
@@ -30,7 +33,6 @@ public class UserService implements Serializable {
     }
 
     public boolean validateRole(UserDto userDto) {
-        boolean isUserADealer = userDao.isUserADealer(userDto);
-        return isUserADealer;
+        return userDao.isUserADealer(userDto);
     }
 }
