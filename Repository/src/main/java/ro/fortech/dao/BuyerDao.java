@@ -2,7 +2,6 @@ package ro.fortech.dao;
 
 import ro.fortech.converters.DtoToEntityConverter;
 import ro.fortech.entities.BuyerEntity;
-import ro.fortech.entities.DealerEntity;
 import utilities.dtos.UserDto;
 
 import javax.ejb.Stateless;

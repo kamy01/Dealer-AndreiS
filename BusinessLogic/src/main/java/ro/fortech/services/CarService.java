@@ -2,6 +2,7 @@ package ro.fortech.services;
 
 import ro.fortech.dao.CarDao;
 import utilities.dtos.CarDto;
+import utilities.enums.CarColor;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,7 +26,7 @@ public class CarService {
         return carDao.getAvailableCars();
     }
 
-    public List<CarDto> validateSearch(double price, String color, List<String> mark) {
+    public List<CarDto> validateSearch(double price, CarColor color, List<String> mark) {
         List<CarDto> cars;
         cars = carDao.findCarsByFilter(price, color, mark);
         return cars;

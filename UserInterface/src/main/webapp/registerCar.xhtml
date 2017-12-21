@@ -26,7 +26,11 @@
                 <p:inputText id="mark" value="#{carManagedBean.mark}" required="true"/>
 
                 <p:outputLabel for="color" value="Color:" />
-                <p:inputText id="color" value="#{carManagedBean.color}"/>
+                <p:selectOneMenu id="color" value="#{carManagedBean.color}">
+                    <p:ajax event="change" update="@this" />
+                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{carManagedBean.availableColors}"/>
+                </p:selectOneMenu>
 
                 <p:outputLabel for="price" value="Price:" />
                 <p:inputText id="price" value="#{carManagedBean.price}" required="true"/>

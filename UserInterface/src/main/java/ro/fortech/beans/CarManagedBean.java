@@ -21,7 +21,7 @@ public class CarManagedBean implements Serializable {
 
     private String name;
     private String mark;
-    private String color;
+    private CarColor color;
     private double price;
     private ConditionStatus condition;
     private Date registrationDate;
@@ -157,11 +157,11 @@ public class CarManagedBean implements Serializable {
         this.price = price;
     }
 
-    public String getColor() {
+    public CarColor getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(CarColor color) {
         this.color = color;
     }
 }

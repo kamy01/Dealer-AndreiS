@@ -1,5 +1,6 @@
 package ro.fortech.entities;
 
+import utilities.enums.CarColor;
 import utilities.enums.ConditionStatus;
 
 import javax.persistence.*;
@@ -13,7 +14,8 @@ public class CarEntity {
     private int id;
     private String name;
     private String mark;
-    private String color;
+    @Enumerated(EnumType.STRING)
+    private CarColor color;
     private double price;
     @Column(name="\"condition\"")
     @Enumerated(EnumType.STRING)
@@ -39,11 +41,11 @@ public class CarEntity {
         this.mark = mark;
     }
 
-    public String getColor() {
+    public CarColor getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(CarColor color) {
         this.color = color;
     }
 

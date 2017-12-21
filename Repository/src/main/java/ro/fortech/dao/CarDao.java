@@ -4,6 +4,7 @@ import ro.fortech.converters.DtoToEntityConverter;
 import ro.fortech.converters.EntityToDtoConverter;
 import ro.fortech.entities.CarEntity;
 import utilities.dtos.CarDto;
+import utilities.enums.CarColor;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -43,9 +44,9 @@ public class CarDao {
         return carDtoList;
     }
 
-    public List<CarDto> findCarsByFilter(double price, String color, List<String> mark) {
+    public List<CarDto> findCarsByFilter(double price, CarColor color, List<String> mark) {
         TypedQuery<CarEntity> query;
-        String sqlStatement = "SELECT c from car c where c.price>=?1 AND c.color LIKE ?2";
+        String sqlStatement = "SELECT c from car c where c.price>=?1 AND c.color=?2";
         if (mark.isEmpty()) {
             query = em.createQuery(sqlStatement, CarEntity.class);
             query.setParameter(1,price);

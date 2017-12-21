@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity(name="buyer")
 public class BuyerEntity {
@@ -13,6 +14,7 @@ public class BuyerEntity {
     private String firstName;
     private String lastName;
     private long identificationNumber;
+    @NotNull
     private int userId;
 
     public String getFirstName() {
