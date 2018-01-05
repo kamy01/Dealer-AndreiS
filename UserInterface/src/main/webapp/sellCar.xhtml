@@ -16,27 +16,29 @@
         </ui:insert>
     </div>
     <h:form id="mainForm">
-        <h:dataTable var="carEntity" value="#{sellCarManagedBean.cars}">
-            <h:column headerText="Name">
+        <p:dataTable var="carEntity" value="#{sellCarManagedBean.carModel}" paginator="true" rows="10"
+        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport}
+        {NextPageLink} {LastPageLink}" rowsPerPageTemplate="5,10,15" lazy="true">
+            <p:column headerText="Name">
                 <h:outputText value="#{carEntity.name}" />
-            </h:column>
+            </p:column>
 
-            <h:column headerText="Registration Date">
+            <p:column headerText="Registration Date">
                 <h:outputText value="#{carEntity.registrationDate}" />
-            </h:column>
+            </p:column>
 
-            <h:column headerText="Brand">
+            <p:column headerText="Brand">
                 <h:outputText value="#{carEntity.mark}" />
-            </h:column>
+            </p:column>
 
-            <h:column headerText="Color">
+            <p:column headerText="Color">
                 <h:outputText value="#{carEntity.color}" />
-            </h:column>
+            </p:column>
 
-            <h:column>
-                <h:commandButton value="Sell" action="#{sellCarManagedBean.doSell(carEntity.name, carEntity.price)}" />
-            </h:column>
-        </h:dataTable>
+            <p:column>
+                <p:commandButton value="Sell" action="#{sellCarManagedBean.doSell(carEntity.name, carEntity.price)}" />
+            </p:column>
+        </p:dataTable>
     </h:form>
 </h:body>
 </html>

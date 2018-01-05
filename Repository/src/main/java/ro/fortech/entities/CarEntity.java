@@ -8,6 +8,9 @@ import javax.validation.constraints.Past;
 import java.util.Date;
 
 @Entity(name="car")
+@NamedQueries({
+        @NamedQuery(name = "Car.getUnsoldCars", query = "SELECT c from car c WHERE c.sold=false")
+})
 public class CarEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

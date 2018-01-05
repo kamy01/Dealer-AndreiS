@@ -5,9 +5,7 @@ import ro.fortech.services.DealerService;
 import ro.fortech.services.UserService;
 import utilities.dtos.UserDto;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;

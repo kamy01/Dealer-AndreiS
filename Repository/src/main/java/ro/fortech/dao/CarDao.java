@@ -26,22 +26,12 @@ public class CarDao {
 
     public List<CarDto> getAllCars() {
         TypedQuery<CarEntity> query = em.createQuery("SELECT c from car c", CarEntity.class);
-        List<CarDto> carDtoList = new ArrayList<CarDto>();
-        for (CarEntity carEntity : query.getResultList()) {
-            CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
-            carDtoList.add(carDto);
-        }
-        return carDtoList;
+        return convertFromEntityListToDtoList(query.getResultList());
     }
 
     public List<CarDto> getAvailableCars() {
-        TypedQuery<CarEntity> query = em.createQuery("SELECT c from car c WHERE c.sold=false", CarEntity.class);
-        List<CarDto> carDtoList = new ArrayList<CarDto>();
-        for (CarEntity carEntity : query.getResultList()) {
-            CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
-            carDtoList.add(carDto);
-        }
-        return carDtoList;
+        TypedQuery<CarEntity> query = em.createNamedQuery("Car.getUnsoldCars", CarEntity.class);
+        return convertFromEntityListToDtoList(query.getResultList());
     }
 
     public List<CarDto> findCarsByFilter(double price, CarColor color, List<String> mark) {
@@ -59,13 +49,7 @@ public class CarDao {
             query.setParameter(2,color);
             query.setParameter(3,mark);
         }
-
-        List<CarDto> carDtoList = new ArrayList<CarDto>();
-        for (CarEntity carEntity : query.getResultList()) {
-            CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
-            carDtoList.add(carDto);
-        }
-        return carDtoList;
+        return convertFromEntityListToDtoList(query.getResultList());
     }
 
     public int findCarIdForName(String name) {
@@ -84,5 +68,26 @@ public class CarDao {
         em.getTransaction().begin();
         carEntity.setSold(true);
         em.getTransaction().commit();
+    }
+
+    public List<CarDto> getLazyCarList(int start, int size) {
+        TypedQuery<CarEntity> query = em.createNamedQuery("Car.getUnsoldCars", CarEntity.class);
+        query.setFirstResult(start);
+        query.setMaxResults(size);
+        return convertFromEntityListToDtoList(query.getResultList());
+    }
+
+    public int getCarTotalCount() {
+        Query query = em.createQuery("SELECT count(c.id) FROM car c");
+        return ((Long) query.getSingleResult()).intValue();
+    }
+
+    private List<CarDto> convertFromEntityListToDtoList(List<CarEntity> carEntityList) {
+        List<CarDto> carDtoList = new ArrayList<CarDto>();
+        for (CarEntity carEntity : carEntityList) {
+            CarDto carDto = EntityToDtoConverter.convertCar(carEntity);
+            carDtoList.add(carDto);
+        }
+        return carDtoList;
     }
 }

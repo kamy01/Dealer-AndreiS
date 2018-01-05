@@ -1,5 +1,6 @@
 package ro.fortech.services;
 
+import org.primefaces.model.SortOrder;
 import ro.fortech.dao.CarDao;
 import utilities.dtos.CarDto;
 import utilities.enums.CarColor;
@@ -7,6 +8,7 @@ import utilities.enums.CarColor;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Map;
 
 @Stateless
 public class CarService {
@@ -34,5 +36,13 @@ public class CarService {
 
     public void validateSale(String name) {
         carDao.updateSale(name);
+    }
+
+    public List<CarDto> getCarList(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
+        return carDao.getLazyCarList(first, pageSize);
+    }
+
+    public int getCarTotalCount() {
+        return carDao.getCarTotalCount();
     }
 }

@@ -1,6 +1,7 @@
 package ro.fortech.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ public class DealerEntity {
     private String firstName;
     private String lastName;
     private double amount;
+    @NotNull
     private int userId;
 
     public int getUserId() {
